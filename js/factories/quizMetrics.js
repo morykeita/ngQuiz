@@ -2,12 +2,20 @@
  * Created by morykeita on 5/25/2017.
  */
 (function () {
-    angular.modular('turtleFacts').factory('quizMetrics',QuizMetrics);
+    angular.module('turtleFacts').factory('quizMetrics',QuizMetrics);
 
     function QuizMetrics() {
         var quizObj={
-            quizActive:false
+            quizActive:false,
+            changeState: changeState
         };
+
+        return quizObj;
+
+        function changeState (state) {
+            quizObj.quizActive=state;
+
+        }
 
 
     }

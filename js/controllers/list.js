@@ -5,21 +5,22 @@
 (function () {
     angular.module('turtleFacts')
         .controller('listCtrl',ListController);
+    ListController.$inject=['quizMetrics'];
 
-    function ListController() {
+    function ListController(quizMetrics) {
         var vm=this;
+        vm.quizMetrics=quizMetrics;
         vm.data = turtlesData;
         vm.activeTurtle={};
         vm.changeActiveTurtle=changeActiveTurtle;
         vm.search="";
-        vm.quizActive=false;
         vm.activateQuiz=activateQuiz;
 
         function  changeActiveTurtle(index) {
             vm.activeTurtle=index;
         }
         function activateQuiz () {
-            vm.quizActive=true;
+            quizMetrics.changeState(true);
 
         }
     }
